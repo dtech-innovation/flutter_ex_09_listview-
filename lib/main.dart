@@ -72,19 +72,30 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-          itemCount: 20,
+      body: ListView.separated(
           itemBuilder: (context, position) {
             return Card(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(15.0),
                 child: Text(
-                  position.toString(),
-                  style: TextStyle(fontSize: 22.0),
+                  'List Item $position',
                 ),
               ),
             );
           },
+          separatorBuilder: (context, position) {
+            return Card(
+              color: Colors.grey,
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: Text(
+                  'Separator $position',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            );
+          },
+          itemCount: 20,
         ),
       // This trailing comma makes auto-formatting nicer for build methods.
     );
